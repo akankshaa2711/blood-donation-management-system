@@ -1,0 +1,86 @@
+<ion-content class="hospital-list-content">
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Donor Rewards</h1>
+      <p>View donor achievements</p>
+    </div>
+  </div>
+
+  <div class="rewards-content">
+    <div class="badges-grid">
+      <div class="badge-card">
+        <div class="badge-icon-wrap gold"><ion-icon name="medal"></ion-icon></div>
+        <div class="badge-name">Gold Donor</div>
+        <div class="badge-desc">20+ Donations</div>
+      </div>
+      <div class="badge-card">
+        <div class="badge-icon-wrap silver"><ion-icon name="medal"></ion-icon></div>
+        <div class="badge-name">Silver Donor</div>
+        <div class="badge-desc">10-19 Donations</div>
+      </div>
+      <div class="badge-card">
+        <div class="badge-icon-wrap bronze"><ion-icon name="medal"></ion-icon></div>
+        <div class="badge-name">Bronze Donor</div>
+        <div class="badge-desc">5-9 Donations</div>
+      </div>
+      <div class="badge-card">
+        <div class="badge-icon-wrap locked"><ion-icon name="star"></ion-icon></div>
+        <div class="badge-name">Beginner</div>
+        <div class="badge-desc">1-4 Donations</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hospital-section">
+    <div class="hospital-grid">
+
+      <ion-card class="hospital-card" *ngFor="let donor of donors">
+
+        <ion-card-header>
+          <ion-card-title>{{ donor.name }}</ion-card-title>
+          <ion-card-subtitle>{{ donor.city }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="info-row">
+            <div>
+              <span class="label">Blood:</span>
+              <span class="value">{{ donor.bloodGroup }}</span>
+            </div>
+            <div>
+              <span class="label">Phone:</span>
+              <span class="value">{{ donor.phone }}</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div>
+              <span class="label">Points:</span>
+              <span class="value">{{ donor.points }}</span>
+            </div>
+            <div>
+              <span class="label">Level:</span>
+              <span class="value">{{ donor.level }}</span>
+            </div>
+          </div>
+
+          <div class="donor-actions">
+            <ion-button size="small" (click)="contactDonor(donor.phone)">Contact Donor</ion-button>
+          </div>
+        </ion-card-content>
+
+      </ion-card>
+
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="donors.length === 0">
+      <ion-icon name="trophy-outline" class="empty-icon"></ion-icon>
+      <h2>No Rewards Yet</h2>
+      <p>There are no donors with rewards to display at the moment.</p>
+    </div>
+  </div>
+
+</ion-content>
+
